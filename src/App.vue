@@ -6,17 +6,24 @@
   <router-view /> -->
   <div ref="as" @click="handleClick">{{ a }}</div>
   {{ count }}
-  <hello-world v-model:count="count" />
+  {{ GetNum(3) }}
+  <hello-world v-model:count="count" abc="132111">
+    <template #title="props"> {{ props }} </template>
+  </hello-world>
 </template>
 <script setup>
 import HelloWorld from "@/components/HelloWorld";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 const a = ref("1231133211");
 const as = ref(null);
 const count = ref(1);
-// console.log(as.value);
+const num = ref(1);
+const GetNum = computed(() => {
+  return (val) => {
+    return num.value + val;
+  };
+});
 const handleClick = () => {
-  // console.log("12311");
   console.log(as.value.innerText);
 };
 const handleInit = () => {
