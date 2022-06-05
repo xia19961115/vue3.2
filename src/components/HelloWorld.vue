@@ -7,7 +7,13 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, useAttrs, useSlots } from "vue";
+import {
+  defineProps,
+  defineEmits,
+  useAttrs,
+  useSlots,
+  defineExpose,
+} from "vue";
 const props = defineProps({
   count: {
     type: Number,
@@ -26,6 +32,10 @@ const handleAdd = () => {
   emits("update:count", props.count + 1);
 };
 console.log(props);
+// 暴露数据 给父组件使用
+defineExpose({
+  title,
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
