@@ -7,35 +7,29 @@
 </template>
 
 <script setup>
-import {
-  defineProps,
-  defineEmits,
-  useAttrs,
-  useSlots,
-  defineExpose,
-} from "vue";
+import { defineProps, defineEmits, useAttrs, useSlots, defineExpose } from 'vue'
 const props = defineProps({
   count: {
     type: Number,
-    default: 0,
-  },
-});
-const title = "东西";
-const attrs = useAttrs();
-console.log("------", attrs);
-const slots = useSlots();
-console.log(slots);
-console.log(slots.title());
-const { abc } = attrs;
-const emits = defineEmits(["update:count"]);
+    default: 0
+  }
+})
+const title = '东西'
+const attrs = useAttrs()
+console.log('------', attrs)
+const slots = useSlots()
+console.log(slots)
+console.log(slots.title())
+const { abc } = attrs
+const emits = defineEmits(['update:count'])
 const handleAdd = () => {
-  emits("update:count", props.count + 1);
-};
-console.log(props);
+  emits('update:count', props.count + 1)
+}
+console.log(props)
 // 暴露数据 给父组件使用
 defineExpose({
-  title,
-});
+  title
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

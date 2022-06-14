@@ -33,7 +33,7 @@ const GetNum = computed(() => {
     return num.value + val
   }
 })
-const handleClick = () => {
+const handleClick = (val) => {
   // console.log(as.value.innerText);
   console.log(cp.value.title)
 }
