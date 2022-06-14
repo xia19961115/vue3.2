@@ -12,42 +12,42 @@
   </hello-world>
 </template>
 <script setup>
-import HelloWorld from "@/components/HelloWorld";
-import { ref, onMounted, computed, reactive, getCurrentInstance } from "vue";
+import HelloWorld from '@/components/HelloWorld'
+import { ref, onMounted, computed, reactive, getCurrentInstance } from 'vue'
 // 从原型上获取 方法
-const { $axios } = getCurrentInstance().appContext.config.globalProperties;
-console.log($axios);
+const { $axios } = getCurrentInstance().appContext.config.globalProperties
+console.log($axios)
 // 通过ref获取值 必须 XX.value
-const a = ref("1231133211");
-const as = ref(null);
-const cp = ref(null);
-const count = ref(1);
-const num = ref(1);
+const a = ref('1231133211')
+const as = ref(null)
+const cp = ref(null)
+const count = ref(1)
+const num = ref(1)
 const form = reactive({
-  name: "zhangsan",
-});
-const red = ref("red");
-console.log(form);
+  name: 'zhangsan'
+})
+const red = ref('red')
+console.log(form)
 const GetNum = computed(() => {
   return (val) => {
-    return num.value + val;
-  };
-});
+    return num.value + val
+  }
+})
 const handleClick = () => {
   // console.log(as.value.innerText);
-  console.log(cp.value.title);
-};
+  console.log(cp.value.title)
+}
 const handleInit = () => {
-  console.log("mounted");
-};
+  console.log('mounted')
+}
 onMounted(() => {
   // console.log(as.value);
-  handleInit();
+  handleInit()
   setTimeout(() => {
-    form.name = "lisi";
-    console.log(form);
-  }, 500);
-});
+    form.name = 'lisi'
+    console.log(form)
+  }, 500)
+})
 </script>
 <style lang="scss">
 // 通过v-bind直接绑定CSS样式
