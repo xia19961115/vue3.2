@@ -29,11 +29,11 @@ const form = reactive({
 const red = ref('red')
 console.log(form)
 const GetNum = computed(() => {
-  return (val) => {
+  return val => {
     return num.value + val
   }
 })
-const handleClick = (val) => {
+const handleClick = val => {
   // console.log(as.value.innerText);
   console.log(cp.value.title)
 }
