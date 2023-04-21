@@ -10,10 +10,14 @@
   <hello-world v-model:count="count" abc="132111" ref="cp">
     <template #title="props"> {{ props }} </template>
   </hello-world>
+  <Minput v-model="myText" />
+  <button @click="handleValue">按钮</button>
 </template>
 <script setup>
 import HelloWorld from '@/components/HelloWorld'
-import { ref, onMounted, computed, reactive, getCurrentInstance } from 'vue'
+import Minput from '@/components/Input/Input'
+console.log('----', Minput)
+import { ref, onMounted, computed, reactive, getCurrentInstance, watch } from 'vue'
 // 从原型上获取 方法
 const { $axios } = getCurrentInstance().appContext.config.globalProperties
 console.log($axios)
@@ -23,6 +27,9 @@ const as = ref(null)
 const cp = ref(null)
 const count = ref(1)
 const num = ref(1)
+const myText = ref({
+  keyWord: ''
+})
 const form = reactive({
   name: 'zhangsan'
 })
@@ -33,6 +40,9 @@ const GetNum = computed(() => {
     return num.value + val
   }
 })
+const handleValue = () => {
+  console.log(myText)
+}
 const handleClick = val => {
   // console.log(as.value.innerText);
   console.log(cp.value.title)
