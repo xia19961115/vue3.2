@@ -11,11 +11,14 @@
     <template #title="props"> {{ props }} </template>
   </hello-world>
   <Minput v-model="myText" />
-  <button @click="handleValue">按钮</button>
+  <button @click="handleValue">按钮</button><br />
+  <View v-model:viewText="viewText" />
+  {{ viewText }}
 </template>
 <script setup>
 import HelloWorld from '@/components/HelloWorld'
 import Minput from '@/components/Input/Input'
+import View from '@/components/view'
 console.log('----', Minput)
 import { ref, onMounted, computed, reactive, getCurrentInstance, watch } from 'vue'
 // 从原型上获取 方法
@@ -30,6 +33,7 @@ const num = ref(1)
 const myText = ref({
   keyWord: ''
 })
+const viewText = ref('')
 const form = reactive({
   name: 'zhangsan'
 })
