@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Auther: xianing
+ * @LastEditors: xianing
+ * @Date: 2023-08-16 00:03:36
+ * @LastEditTime: 2023-08-28 01:33:57
+-->
 <template>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
@@ -12,6 +19,7 @@
   </hello-world>
   <Minput v-model="myText" />
   <button @click="handleValue">按钮</button><br />
+  <button @click="page">About页面</button>
   <View v-model:viewText="viewText" />
   {{ viewText }}
 </template>
@@ -21,12 +29,20 @@ import Minput from '@/components/Input/Input'
 import View from '@/components/view'
 console.log('----', Minput)
 import { ref, onMounted, computed, reactive, getCurrentInstance, watch } from 'vue'
+// 路由 通过导入导出形式实现
+import { useRouter, useRoute } from 'vue-router'
+const router = useRouter() // 等于 vue2 this.$router
+const route = useRoute() // 等于 vue2 this.$route
+console.log(getCurrentInstance(), ',,,,,,,,,,,,')
 // 从原型上获取 方法
 const { $axios } = getCurrentInstance().appContext.config.globalProperties
 console.log($axios)
-// 通过ref获取值 必须 XX.value
+// vue3 通过 reactive 和 ref 来创建响应式对象
+// reactive （props, reactive） 只能传递 一个对象
+// ref （computed, ref） 可以传递任何类型（包括）代理对象 修改 通过 xxx.value 来取值 / 赋值
 const a = ref('1231133211')
 const as = ref(null)
+// 获取节点 （在模板中refs绑定） onMounted 可以获取节点信息
 const cp = ref(null)
 const count = ref(1)
 const num = ref(1)
@@ -37,6 +53,12 @@ const viewText = ref('')
 const form = reactive({
   name: 'zhangsan'
 })
+const page = () => {
+  // console.log(route, router)
+  router.push({
+    name: 'About'
+  })
+}
 const red = ref('red')
 console.log(form)
 const GetNum = computed(() => {
