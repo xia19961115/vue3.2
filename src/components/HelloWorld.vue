@@ -1,6 +1,13 @@
+<!--
+ * @Description: 
+ * @Auther: xianing
+ * @LastEditors: xianing
+ * @Date: 2023-08-16 00:03:36
+ * @LastEditTime: 2023-08-28 01:11:13
+-->
 <template>
   <div class="hello">
-    <button @click="handleAdd">加</button>
+    <button @click="handleAdd">加1</button>
     {{ abc }}
     <slot name="title" v-bind="{ title }"></slot>
   </div>
