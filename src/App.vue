@@ -3,15 +3,15 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-16 00:03:36
- * @LastEditTime: 2023-08-28 01:33:57
+ * @LastEditTime: 2023-08-28 11:14:24
 -->
 <template>
-  <!-- <div id="nav">
+  <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
-  <router-view /> -->
-  <div class="show" ref="as" @click="handleClick">{{ a }}</div>
+  <router-view />
+  <!-- <div class="show" ref="as" @click="handleClick">{{ a }}</div>
   {{ count }}
   {{ GetNum(3) }}
   <hello-world v-model:count="count" abc="132111" ref="cp">
@@ -21,7 +21,7 @@
   <button @click="handleValue">按钮</button><br />
   <button @click="page">About页面</button>
   <View v-model:viewText="viewText" />
-  {{ viewText }}
+  {{ viewText }} -->
 </template>
 <script setup>
 import HelloWorld from '@/components/HelloWorld'
@@ -33,13 +33,16 @@ import { ref, onMounted, computed, reactive, getCurrentInstance, watch } from 'v
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter() // 等于 vue2 this.$router
 const route = useRoute() // 等于 vue2 this.$route
-console.log(getCurrentInstance(), ',,,,,,,,,,,,')
 // 从原型上获取 方法
 const { $axios } = getCurrentInstance().appContext.config.globalProperties
 console.log($axios)
 // vue3 通过 reactive 和 ref 来创建响应式对象
 // reactive （props, reactive） 只能传递 一个对象
-// ref （computed, ref） 可以传递任何类型（包括）代理对象 修改 通过 xxx.value 来取值 / 赋值
+// ref （computed, ref） 可以传递任何类型（包括代理对象） 修改 通过 xxx.value 来取值 / 赋值
+// const ref1 = ref(1)
+// 如果传递的是代理对象 两个地址是一样的
+// const ref2 = ref(ref1)
+// console.log(ref1.value === ref2.value) 返回true
 const a = ref('1231133211')
 const as = ref(null)
 // 获取节点 （在模板中refs绑定） onMounted 可以获取节点信息
@@ -87,7 +90,7 @@ onMounted(() => {
 </script>
 <style lang="scss">
 // 通过v-bind直接绑定CSS样式
-.show {
-  color: v-bind(red);
-}
+// .show {
+//   color: v-bind(red);
+// }
 </style>
