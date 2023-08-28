@@ -3,18 +3,41 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-15 10:16:37
- * @LastEditTime: 2023-08-28 11:22:04
+ * @LastEditTime: 2023-08-28 12:14:57
 -->
 <template>
   <div class="home">
     <div class="show" ref="dom" @click="handleClick">home页面</div>
+    <!-- 简易的Store -->
+    <div>
+      <div>简易的Store</div>
+      <button @click="decrement">-</button>
+      {{ count }}
+      <button @click="add">+</button>
+    </div>
+    <div>
+      <div>组件使用</div>
+      <props-component :nickName="nickName" @change="emitChage" />
+    </div>
   </div>
 </template>
 
 <script setup name="Home">
+// 组件需要引入 (可以不用注册了)
+import PropsComponent from '@/components/props.vue'
 import { nextTick, onMounted, ref } from 'vue'
+// 使用简易的store
+import { countStore, increment, decrement } from '@/store/useCountStore'
+const { count } = countStore
+const add = () => {
+  increment()
+}
 
-// 获取节点
+const nickName = ref('niko')
+const emitChage = e => {
+  nickName.value = e
+}
+// 获取节点(接受的参数  于模板中ref 定义的相同)
 const dom = ref(null)
 
 const color = ref('pink')
