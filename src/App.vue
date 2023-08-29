@@ -3,12 +3,12 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-16 00:03:36
- * @LastEditTime: 2023-08-29 00:46:25
+ * @LastEditTime: 2023-08-30 00:48:03
 -->
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/piniaUse">PiniaUse</router-link>
   </div>
   <router-view />
   <!-- <div class="show" ref="as" @click="handleClick">{{ a }}</div>
