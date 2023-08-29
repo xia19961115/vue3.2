@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-16 00:03:36
- * @LastEditTime: 2023-08-28 11:54:16
+ * @LastEditTime: 2023-08-28 14:18:56
 -->
 <template>
   <div id="nav">
@@ -38,6 +38,7 @@ const { $axios } = getCurrentInstance().appContext.config.globalProperties
 console.log($axios)
 // vue3 通过 reactive 和 ref 来创建响应式对象
 // reactive （props, reactive） 只能传递 一个对象
+// **如果解构 reactive 对象会丢失响应式 可以调用toRefs() 来包一层**
 // ref （computed, ref） 可以传递任何类型（包括代理对象） 修改 通过 xxx.value 来取值 / 赋值
 // const ref1 = ref(1)
 // 如果传递的是代理对象 两个地址是一样的

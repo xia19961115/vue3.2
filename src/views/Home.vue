@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-15 10:16:37
- * @LastEditTime: 2023-08-28 12:14:57
+ * @LastEditTime: 2023-08-28 14:06:36
 -->
 <template>
   <div class="home">
@@ -17,7 +17,7 @@
     </div>
     <div>
       <div>组件使用</div>
-      <props-component :nickName="nickName" @change="emitChage" />
+      <props-component ref="com" :nickName="nickName" @change="emitChage" />
     </div>
   </div>
 </template>
@@ -39,6 +39,8 @@ const emitChage = e => {
 }
 // 获取节点(接受的参数  于模板中ref 定义的相同)
 const dom = ref(null)
+// 获取子组件
+const com = ref(null)
 
 const color = ref('pink')
 onMounted(async () => {
@@ -51,6 +53,8 @@ onMounted(async () => {
   // const ref2 = ref(ref1)
   // console.log(ref1.value === ref2.value) 返回true
   console.log(dom.value, 'dommmmmmmm')
+  // 获取子组件  可以通过 子组件暴露出的方法 属性
+  console.log(com.value, 'commmmmmmm')
 })
 </script>
 
