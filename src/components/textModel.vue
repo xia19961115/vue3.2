@@ -1,13 +1,16 @@
+<!--
+ * @Description: 
+ * @Auther: xianing
+ * @LastEditors: xianing
+ * @Date: 2023-08-16 00:03:36
+ * @LastEditTime: 2023-08-29 00:59:06
+-->
 <template>
   <!-- :modeValue="viewText" -->
   <input type="text" v-model="text" @input="change(text)" />
 </template>
-<script>
-export default {
-  name: 'View'
-}
-</script>
-<script setup>
+
+<script setup name="TextModel">
 import { defineProps, defineEmits, ref } from 'vue'
 const props = defineProps({
   viewText: {
@@ -17,7 +20,7 @@ const props = defineProps({
 const text = ref('')
 const emits = defineEmits(['update:viewText'])
 const change = e => {
-  //   console.log(e)
+  // console.log(e)
   emits('update:viewText', e)
 }
 </script>

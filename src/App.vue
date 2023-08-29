@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-16 00:03:36
- * @LastEditTime: 2023-08-28 14:18:56
+ * @LastEditTime: 2023-08-29 00:46:25
 -->
 <template>
   <div id="nav">
@@ -26,7 +26,7 @@
 <script setup>
 import HelloWorld from '@/components/HelloWorld'
 import Minput from '@/components/Input/Input'
-import View from '@/components/view'
+// import View from '@/components/view'
 console.log('----', Minput)
 import { ref, onMounted, computed, reactive, getCurrentInstance, watch } from 'vue'
 // 路由 通过导入导出形式实现

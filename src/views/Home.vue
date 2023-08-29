@@ -3,7 +3,11 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-15 10:16:37
+<<<<<<< HEAD
  * @LastEditTime: 2023-08-28 14:06:36
+=======
+ * @LastEditTime: 2023-08-29 01:10:07
+>>>>>>> 81252e22e3e205867d06dfb05640dc9c8448430f
 -->
 <template>
   <div class="home">
@@ -16,8 +20,21 @@
       <button @click="add">+</button>
     </div>
     <div>
-      <div>组件使用</div>
-      <props-component ref="com" :nickName="nickName" @change="emitChage" />
+      <div>组件使用props,emit</div>
+      <props-component :nickName="nickName" @change="emitChage" />
+    </div>
+    <div>
+      <div>组件使用v-model</div>
+      <!-- vue3 取消了.sync（语法糖）现在可以使用 多个v-model绑定数据 -->
+      <!-- 默认 v-model='text' 默认绑定 moudelValue 子组件Props接受 moudelValue-->
+      <!-- 具名 v-model:viewText="viewText" 具名绑定 viewText 子组件Props接受 viewText -->
+      <!-- 高级用法 修饰符  -->
+      <!-- 默认修饰符 v-model.trim = 'text' 子组件props接受 modelModifiers 一个对象 -->
+      <!-- 具名修饰符 v-model:viewText.trim = 'viewText' 子组件props接受 viewTextModifiers 一个对象 -->
+      <!-- 具名用法 v-model:xxx = "变量" props传递 xxx     修饰符 xxxModifiers -->
+      <!-- 默认用法 v-model = "变量" props传递 moudelValue     修饰符 moudelValueModifiers -->
+      <!-- 完整写法 <组件 :viewText.trim="aaaa" @upade:viewText="函数" /> -->
+      <TextModel v-model.viewText="viewText" />
     </div>
   </div>
 </template>
@@ -25,7 +42,8 @@
 <script setup name="Home">
 // 组件需要引入 (可以不用注册了)
 import PropsComponent from '@/components/props.vue'
-import { nextTick, onMounted, ref } from 'vue'
+import TextModel from '@/components/textModel.vue'
+import { nextTick, onMounted, ref, watchEffect } from 'vue'
 // 使用简易的store
 import { countStore, increment, decrement } from '@/store/useCountStore'
 const { count } = countStore
@@ -43,6 +61,12 @@ const dom = ref(null)
 const com = ref(null)
 
 const color = ref('pink')
+// v-model使用
+const viewText = ref('')
+watchEffect(() => {
+  console.log(viewText.value)
+})
+//
 onMounted(async () => {
   await nextTick()
   // vue3 通过 reactive 和 ref 来创建响应式对象
