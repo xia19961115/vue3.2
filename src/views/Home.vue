@@ -3,11 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-15 10:16:37
-<<<<<<< HEAD
- * @LastEditTime: 2023-08-28 14:06:36
-=======
- * @LastEditTime: 2023-08-29 01:10:07
->>>>>>> 81252e22e3e205867d06dfb05640dc9c8448430f
+ * @LastEditTime: 2023-08-29 14:06:05
 -->
 <template>
   <div class="home">
@@ -21,7 +17,7 @@
     </div>
     <div>
       <div>组件使用props,emit</div>
-      <props-component :nickName="nickName" @change="emitChage" />
+      <props-component ref="com" :nickName="nickName" @change="emitChage" />
     </div>
     <div>
       <div>组件使用v-model</div>
@@ -34,7 +30,12 @@
       <!-- 具名用法 v-model:xxx = "变量" props传递 xxx     修饰符 xxxModifiers -->
       <!-- 默认用法 v-model = "变量" props传递 moudelValue     修饰符 moudelValueModifiers -->
       <!-- 完整写法 <组件 :viewText.trim="aaaa" @upade:viewText="函数" /> -->
-      <TextModel v-model.viewText="viewText" />
+      <TextModel v-model:viewText.trim="text" />
+    </div>
+    <!--  -->
+    <div>
+      <div>v-model高级组件用法</div>
+      <Minput v-model="myText" />
     </div>
   </div>
 </template>
@@ -43,7 +44,8 @@
 // 组件需要引入 (可以不用注册了)
 import PropsComponent from '@/components/props.vue'
 import TextModel from '@/components/textModel.vue'
-import { nextTick, onMounted, ref, watchEffect } from 'vue'
+import Minput from '@/components/Input/Input.vue'
+import { nextTick, onMounted, ref, reactive, watchEffect } from 'vue'
 // 使用简易的store
 import { countStore, increment, decrement } from '@/store/useCountStore'
 const { count } = countStore
@@ -62,11 +64,11 @@ const com = ref(null)
 
 const color = ref('pink')
 // v-model使用
-const viewText = ref('')
-watchEffect(() => {
-  console.log(viewText.value)
+const text = ref('')
+// v-model 高级用法
+const myText = ref({
+  keyWord: ''
 })
-//
 onMounted(async () => {
   await nextTick()
   // vue3 通过 reactive 和 ref 来创建响应式对象

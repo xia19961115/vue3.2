@@ -3,17 +3,22 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-16 00:03:36
- * @LastEditTime: 2023-08-28 11:13:46
+ * @LastEditTime: 2023-08-29 16:21:13
  */
-import { createApp, ref } from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 const app = createApp(App)
-// const ref1 = ref(1)
-// const ref2 = ref(ref1)
-// console.log(ref1.value === ref2.value, '?????')
+
 // 原型上绑定方法
 app.config.globalProperties.$axios = 'axios'
 
-app.use(store).use(router).mount('#app')
+// 使用pinia vue3.2 版本  建议使用2.0.33版本的pinia
+import { createPinia } from 'pinia'
+const pinia = createPinia()
+// 持久化插件
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+pinia.use(piniaPluginPersistedstate)
+
+app.use(store).use(router).use(pinia).mount('#app')

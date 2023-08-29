@@ -10,12 +10,7 @@
     <input type="text" v-model="model.keyWord" />
   </div>
 </template>
-<script>
-export default {
-  name: 'Minput'
-}
-</script>
-<script setup>
+<script setup name="Minput">
 import { defineProps, defineEmits, computed } from 'vue'
 const props = defineProps({
   modelValue: {

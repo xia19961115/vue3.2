@@ -27,7 +27,7 @@
 import HelloWorld from '@/components/HelloWorld'
 import Minput from '@/components/Input/Input'
 // import View from '@/components/view'
-console.log('----', Minput)
+// console.log('----', Minput)
 import { ref, onMounted, computed, reactive, getCurrentInstance, watch } from 'vue'
 // 路由 通过导入导出形式实现
 import { useRouter, useRoute } from 'vue-router'
