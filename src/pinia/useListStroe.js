@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-30 01:26:29
- * @LastEditTime: 2023-08-30 02:18:42
+ * @LastEditTime: 2023-08-30 16:13:44
  */
 import { defineStore } from 'pinia'
 import { computed, reactive } from 'vue'
@@ -12,14 +12,16 @@ import { useNumStore } from './useNumStore'
 export const useListStroe = defineStore('list', () => {
   // 获取其他仓库的实例
   const store = useNumStore()
-  const list = reactive([])
-  const listLength = computed(() => list.length)
+  const list = reactive({
+    item: []
+  })
+  const listLength = computed(() => list.item.length)
   const otherNum = computed(() => store.doubleNum * 4)
   const add = val => {
-    list.push(val)
+    list.item.push(val)
   }
   const del = val => {
-    list.splice(val, 1)
+    list.item.splice(val, 1)
   }
   return {
     list,

@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-04-21 14:48:38
- * @LastEditTime: 2023-04-21 15:52:40
+ * @LastEditTime: 2023-08-30 02:24:09
 -->
 <template>
   <div>
@@ -27,6 +27,7 @@ const model = computed({
           ...obj,
           [name]: val
         })
+        // 表示 修改成功
         return true
       }
     })
