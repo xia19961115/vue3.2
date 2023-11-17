@@ -3,10 +3,11 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-15 10:16:37
- * @LastEditTime: 2023-08-30 00:50:33
+ * @LastEditTime: 2023-11-17 12:00:23
  */
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Test from '../views/Test.vue'
 
 const routes = [
   {
@@ -17,6 +18,11 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: Test
   },
   {
     path: '/piniaUse',
