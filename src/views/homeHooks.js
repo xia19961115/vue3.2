@@ -1,4 +1,4 @@
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, onUnmounted } from 'vue'
 
 // const a = ref(1)
 
@@ -8,8 +8,13 @@ import { onMounted, ref } from 'vue'
 
 export const useHome = val => {
   const a = ref(val)
+
   onMounted(() => {
-    console.log(a, 'homeHooks')
+    console.log(a.value, 'homeHooks')
+  })
+
+  onUnmounted(() => {
+    console.log('homeHooks卸载了')
   })
 
   return {
