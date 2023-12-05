@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-15 10:16:37
- * @LastEditTime: 2023-08-29 14:06:05
+ * @LastEditTime: 2023-12-06 00:57:03
 -->
 <template>
   <div class="home">
@@ -20,7 +20,7 @@
       <props-component ref="com" :nickName="nickName" @change="emitChage" />
     </div>
     <div>
-      <div>组件使用v-model</div>
+      <div @click="asd">{{ a }}组件使用v-model</div>
       <!-- vue3 取消了.sync（语法糖）现在可以使用 多个v-model绑定数据 -->
       <!-- 默认 v-model='text' 默认绑定 moudelValue 子组件Props接受 moudelValue-->
       <!-- 具名 v-model:viewText="viewText" 具名绑定 viewText 子组件Props接受 viewText -->
@@ -49,6 +49,9 @@ import { nextTick, onMounted, ref, reactive, watchEffect } from 'vue'
 // 使用简易的store
 import { countStore, increment, decrement } from '@/store/useCountStore'
 const { count } = countStore
+
+import { useHome } from './homeHooks'
+const { add: asd, a } = useHome(957)
 const add = () => {
   increment()
 }
@@ -70,6 +73,7 @@ const myText = ref({
   keyWord: ''
 })
 onMounted(async () => {
+  console.log('组件内部的onMounted')
   await nextTick()
   // vue3 通过 reactive 和 ref 来创建响应式对象
   // reactive （props, reactive） 只能传递 一个对象
