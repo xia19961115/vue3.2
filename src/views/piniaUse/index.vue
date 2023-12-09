@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-05 19:30:53
- * @LastEditTime: 2023-08-30 01:45:06
+ * @LastEditTime: 2023-12-09 11:27:18
 -->
 <template>
   <div class="about">
@@ -26,12 +26,15 @@
       >
     </div>
     <component :is="componentList[selectedComponent]" />
+    <component :is="h" />
   </div>
 </template>
 <script setup>
-import { reactive, ref, shallowRef, computed, toRefs } from 'vue'
+import { reactive, ref, shallowRef, computed, toRefs, resolveComponent } from 'vue'
 import { useComponentList } from './composition/useComponentList'
 const componentList = useComponentList()
+const h = resolveComponent('All')
+console.log(h, 'hhhhhhhhhhhhhhhhhhhhh')
 console.log(componentList)
 const active = computed(
   // 完整写法

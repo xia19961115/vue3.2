@@ -3,12 +3,13 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-16 00:03:36
- * @LastEditTime: 2023-08-30 15:54:10
+ * @LastEditTime: 2023-12-09 11:32:28
  */
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import install from './plugin/install'
 const app = createApp(App)
 
 // 原型上绑定方法
@@ -24,4 +25,4 @@ pinia.use(piniaPluginPersistedstate)
 
 import { piniaResetPlugin } from './plugin/piniaResetPlugin'
 pinia.use(piniaResetPlugin)
-app.use(store).use(router).use(pinia).mount('#app')
+app.use(store).use(router).use(pinia).use(install).mount('#app')
