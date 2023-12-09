@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-05 19:30:53
- * @LastEditTime: 2023-12-09 11:27:18
+ * @LastEditTime: 2023-12-09 11:38:32
 -->
 <template>
   <div class="about">
@@ -33,6 +33,7 @@
 import { reactive, ref, shallowRef, computed, toRefs, resolveComponent } from 'vue'
 import { useComponentList } from './composition/useComponentList'
 const componentList = useComponentList()
+// resolveComponent 只能加载同步组件
 const h = resolveComponent('All')
 console.log(h, 'hhhhhhhhhhhhhhhhhhhhh')
 console.log(componentList)
