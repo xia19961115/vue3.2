@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-16 00:03:36
- * @LastEditTime: 2023-12-09 11:32:28
+ * @LastEditTime: 2023-12-09 22:52:07
  */
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -23,6 +23,7 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 // 使用插件
 pinia.use(piniaPluginPersistedstate)
 
+// 使用自定义插件
 import { piniaResetPlugin } from './plugin/piniaResetPlugin'
 pinia.use(piniaResetPlugin)
 app.use(store).use(router).use(pinia).use(install).mount('#app')

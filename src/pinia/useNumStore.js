@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-29 14:15:45
- * @LastEditTime: 2023-12-09 12:26:07
+ * @LastEditTime: 2023-12-09 22:49:59
  */
 // options api分格
 // pinina提供了 state  getters actions(支持同步/异步)
@@ -26,5 +26,13 @@ export const useNumStore = defineStore('num', {
       this.num--
     }
   },
-  persist: true
+  // 使用持久化插件
+  persist: {
+    // 取别名  默认是 store的id
+    key: 'PINIA_NUM',
+    // 保存的位置   默认 localStorage  可选值 localStorage | sessionStorage
+    storage: sessionStorage,
+    // 只保存num
+    paths: ['num']
+  }
 })

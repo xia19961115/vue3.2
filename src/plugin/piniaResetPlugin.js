@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2023-08-30 15:29:26
- * @LastEditTime: 2023-08-30 16:11:40
+ * @LastEditTime: 2023-12-09 23:00:52
  */
 function deepClone(obj) {
   if (Array.isArray(obj)) {
@@ -25,6 +25,7 @@ function deepClone(obj) {
 
 export const piniaResetPlugin = ({ store }) => {
   //   console.log(ctx)
+  // 默认会传递一个ctx 对象  下面是ctx 对象
   // ctx.pinia // 使用 `createPinia()` 创建的 pinia
   // ctx.app // 使用 `createApp()` 创建的当前应用程序（仅限 Vue 3）
   // ctx.store // 插件正在扩充的 store
