@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-15 10:16:37
- * @LastEditTime: 2023-12-06 00:57:03
+ * @LastEditTime: 2024-03-04 14:44:22
 -->
 <template>
   <div class="home">
@@ -17,7 +17,7 @@
     </div>
     <div>
       <div>组件使用props,emit</div>
-      <props-component ref="com" :nickName="nickName" @change="emitChage" />
+      <props-component class="bin" ref="com" abc="123" :nickName="nickName" @change="emitChage" />
     </div>
     <div>
       <div @click="asd">{{ a }}组件使用v-model</div>
