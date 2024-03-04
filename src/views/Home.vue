@@ -3,7 +3,7 @@
  * @Auther: xianing
  * @LastEditors: xianing
  * @Date: 2022-06-15 10:16:37
- * @LastEditTime: 2024-03-04 14:44:22
+ * @LastEditTime: 2024-03-04 14:52:41
 -->
 <template>
   <div class="home">
@@ -37,6 +37,10 @@
       <div>v-model高级组件用法</div>
       <Minput v-model="myText" />
     </div>
+    <!--  -->
+    <div>
+      <div @click="mitter">{{ nowRef.name }}</div>
+    </div>
   </div>
 </template>
 
@@ -51,6 +55,13 @@ import { countStore, increment, decrement } from '@/store/useCountStore'
 const { count } = countStore
 
 import { useHome } from './homeHooks'
+const nowRef = ref({ name: '789', age: 18 })
+const mitter = () => {
+  console.log(nowRef)
+  // nowRef.value = {
+  //   name: '123'
+  // }
+}
 const { add: asd, a } = useHome(957)
 const add = () => {
   increment()
